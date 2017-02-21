@@ -4,9 +4,24 @@ Promise = require 'bluebird'
 isArray = require 'util-ex/lib/is/type/array'
 
 module.exports = (aDictionary)->
-  aDictionary.define 'str', /('.+'|".*")/
-
   admin = username: 'admin', password: 'admiN123#'
+
+  this.define /不存在用户\s*$string/, (aUsername)->
+    vContext = this.ctx
+    if isArray aUsername
+      aQuery = username: inq: aUsername
+    else if aUsername
+      aQuery = username: aUsername
+    result = this.api.get Request.USERS
+    result = result.query filter: {where: aQuery} if aQuery
+    result.then (response)->
+      vContext.result = response
+      console.log 'exists user', response.body
+      expect(response.status).to.be.equal 200
+      expect(response.body).to.have.length 0
+    .catch (err)->
+      vContext.result = err
+      expect(err).to.be.null
 
   this.define /超级(?:管理[员者]|用户)(?:已经?)?登录/, ->
     vContext = this.ctx
@@ -35,18 +50,23 @@ module.exports = (aDictionary)->
   this.define /[清删][理除]所有用户,只保留超级用户/, ->
     vContext = this.ctx
     this.api.delete Request.USERS
-    .query {where: {neq: {username: 'admin'}}}
+    .query {where: {username: {neq: 'admin'}}}
     .then (response)->
       vContext.result = response
+    .catch (err)->
+      vContext.result = err
+      return err
 
   this.define /[清删][理除]指定用户[:：]$string/, (aUsers)->
     vContext = this.ctx
     if isArray aUsers
       result = this.api.delete Request.USERS
-      .query where: in: username: aUsers
+      .query where: username: inq: aUsers
     else
       result = this.api.delete Request.USERS
       .query where: username: aUsers
     result.then (response)->
       vContext.result = response
-
+    .catch (err)->
+      vContext.result = err
+      return err

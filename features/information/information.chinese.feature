@@ -7,7 +7,14 @@
 背景:
   假定 超级用户已经登录
   #inq:[{id:'/物业/#information/新闻'},{id:'/物业/#information/新闻/军事新闻'}]
-  # 假定 删除指定条件的资源
+  # 假定 删除指定条件`id:inq:['/物业/#information/新闻', '/物业/#information/新闻/军事新闻']`的资源:"OrganizationInformations"
+  假定 清理资源"OrganizationInformations",指定条件如下：
+    ---
+    id:inq:[
+      '/物业/#information/新闻'
+      '/物业/#information/新闻/军事新闻'
+    ]
+    ---
 
 # id和name的建立规则：
 # name = parent.name + '/' + title
