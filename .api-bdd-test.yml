@@ -1,0 +1,6 @@
+#server: "http://192.168.3.14:3000"
+server: "http://localhost:3000"
+root: /api
+libs: "./libs"
+steps: "./steps"
+features: "./features"
