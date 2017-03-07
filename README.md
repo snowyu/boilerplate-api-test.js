@@ -186,8 +186,8 @@ features: "./features"          # 功能描述目录
   |-----------|-----------------------|
 ```
 
-* [Account Feature](./features/account.chinese.feature)
-* [Account.destroyAll Feature](./features/account.destroy-all.chinese.feature)
+* [Account Feature](./features/account/account.chinese.feature)
+* [Account.destroyAll Feature](./features/account/account.destroy-all.chinese.feature)
 
 ## 约定
 
