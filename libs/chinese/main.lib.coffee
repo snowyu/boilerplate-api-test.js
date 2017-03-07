@@ -24,6 +24,7 @@ module.exports = (aDictionary)->
   this.define /[删清][除理空]指定条件\s*$string\s*的资源[:：]?\s*$string/, (aQuery, aResource)->
     vContext = this.ctx
     result = this.api.delete aResource
+    console.log aQuery
     # aQuery = inq: aQuery if isArray aQuery
     result = result.query {where: JSON.stringify aQuery} if aQuery
     result.then (response)->
@@ -31,7 +32,7 @@ module.exports = (aDictionary)->
     .catch (err)->
       vContext.result = err
 
-  this.define /[删清][除理空]资源\s*$string[,，]?\s*指定条件如下[:：]?\n$object/, (aResource,aQuery)->
+  this.define /[删清][除理空]资源\s*$string[,，]?\s*指定条件如下[:：]?$object/, (aResource,aQuery)->
     vContext = this.ctx
     result = this.api.delete aResource
     # aQuery = inq: aQuery if isArray aQuery
