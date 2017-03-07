@@ -79,19 +79,25 @@ features: "./features"          # 功能描述目录
 ### 标准步骤
 
 * 新建资源:Accounts 内容为
+    ```
     ---
     username: 'yourName..'
     password: '...'
     ---
+    ```
 * 列出资源:Accounts
 * 搜索资源:Accounts,按如下条件
+    ```
     ---
     filter: where: {}
     ---
+    ```
 * 修改ID为"XXXX"的资源:Accounts
+    ```
     ---
     username: 'yourName..'
     ---
+    ```
 * 删除ID为"XXX"的资源:Accounts
 * [不]存在ID为"1"的资源(Accounts)
 * 上次的状态为200
@@ -108,6 +114,7 @@ features: "./features"          # 功能描述目录
 ### 标准 API
 
 * GET|POST|PUT|DELETE|HEAD "Accounts":
+    ```
     ---
     data:
       username: 'yourName..'
@@ -117,6 +124,7 @@ features: "./features"          # 功能描述目录
     fields:
     attach:
     ---
+    ```
 
 ### 例子
 
@@ -127,7 +135,7 @@ features: "./features"          # 功能描述目录
 
 @功能前提
 场景: 清理用户
-  假定 超级用户已经登录
+  假如 超级用户已经登录
   # 当  清理所有用户,只保留超级用户
   # 当 清空资源:"Accounts",保留`username:'admin'`
   当 删除指定用户:`["autoTest1"]`
@@ -142,7 +150,7 @@ features: "./features"          # 功能描述目录
     password: '123123'
     ---
   那么 期望上次的状态为200.
-  并且 期望上次的结果包括：
+  而且 期望上次的结果包括：
     ----
     username: 'autoTest1'
     ----
@@ -156,7 +164,7 @@ features: "./features"          # 功能描述目录
 
 ```cucumber
 场景: 删除指定单个用户
-  假定 成功注册新用户,其用户信息如下：[data]
+  假如 成功注册新用户,其用户信息如下：[data]
   当 删除指定用户:"[name]"
   那么 不存在用户:"[name]"
 
