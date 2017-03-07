@@ -17,7 +17,7 @@
     "util-ex": "^0.3.15"
   },
   "devDependencies": {
-    "api-bdd-test": "^0.4.0",
+    "api-bdd-test": "^0.4.4",
     "chai": "^3.5.0",
     "chai-subset": "^1.5.0",
     "chakram": "^1.5.0",

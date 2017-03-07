@@ -7,7 +7,7 @@ module.exports = (aDictionary)->
   this.define /查找指定条件$string的资源[:：]\s*$string/, (aQuery, aResource)->
     vContext = this.ctx
     result = this.api.get aResource
-    result = result.query filter: {where: aQuery} if aQuery
+    result = result.query filter: JSON.stringify {where: aQuery} if aQuery
     result.then (response)->
       vContext.result = response
     .catch (err)->
@@ -25,7 +25,7 @@ module.exports = (aDictionary)->
     vContext = this.ctx
     result = this.api.delete aResource
     # aQuery = inq: aQuery if isArray aQuery
-    result = result.query {where: aQuery} if aQuery
+    result = result.query {where: JSON.stringify aQuery} if aQuery
     result.then (response)->
       vContext.result = response
     .catch (err)->
@@ -35,7 +35,7 @@ module.exports = (aDictionary)->
     vContext = this.ctx
     result = this.api.delete aResource
     # aQuery = inq: aQuery if isArray aQuery
-    result = result.query {where: aQuery} if aQuery
+    result = result.query {where: JSON.stringify aQuery} if aQuery
     result.then (response)->
       vContext.result = response
     .catch (err)->
