@@ -100,6 +100,14 @@ features: "./features"          # 功能描述目录
     ```
 * 删除ID为"XXX"的资源:Accounts
 * [不]存在ID为"1"的资源(Accounts)
+* 清空资源:"Organizations"
+* 删除指定条件`` `username: inq:['user1', 'user2']` ``的资源:"Accounts"
+* 删除资源"Accounts"，指定条件如下
+    ```
+    ---
+    username: inq:['user1', 'user2']
+    ---
+    ```
 * 上次的状态为200
 * 上次的结果包括
 * 上次的结果是
