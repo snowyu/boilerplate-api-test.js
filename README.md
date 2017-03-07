@@ -79,6 +79,7 @@ features: "./features"          # 功能描述目录
 ### 标准步骤
 
 * 新建资源:Accounts 内容为
+
     ```
     ---
     username: 'yourName..'
@@ -87,12 +88,14 @@ features: "./features"          # 功能描述目录
     ```
 * 列出资源:Accounts
 * 搜索资源:Accounts,按如下条件
+
     ```
     ---
     filter: where: {}
     ---
     ```
 * 修改ID为"XXXX"的资源:Accounts
+
     ```
     ---
     username: 'yourName..'
@@ -103,6 +106,7 @@ features: "./features"          # 功能描述目录
 * 清空资源:"Organizations"
 * 删除指定条件`` `username: inq:['user1', 'user2']` ``的资源:"Accounts"
 * 删除资源"Accounts"，指定条件如下
+
     ```
     ---
     username: inq:['user1', 'user2']
@@ -122,6 +126,7 @@ features: "./features"          # 功能描述目录
 ### 标准 API
 
 * GET|POST|PUT|DELETE|HEAD "Accounts":
+
     ```
     ---
     data:
