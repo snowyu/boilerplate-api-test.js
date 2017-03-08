@@ -6,7 +6,7 @@ isArray = require 'util-ex/lib/is/type/array'
 module.exports = (aDictionary)->
   admin = username: 'admin', password: 'admiN123#'
 
-  this.define /(不?存在)用户[:：]?\s*$string/, (aExists, aUsername)->
+  this.define /(不?应?该?存在)用户[:：]?\s*$string/, (aExists, aUsername)->
     if aExists[0] is '不'
       vCount = 0
     else
